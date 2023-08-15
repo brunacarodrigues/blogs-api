@@ -1,6 +1,5 @@
 const express = require('express');
-
-// Iniciando o Projeto Blogs API...
+const { loginRoute, userRoute } = require('./routes');
 
 const app = express();
 
@@ -10,6 +9,8 @@ app.get('/', (_request, response) => {
 });
 
 app.use(express.json());
+app.use('/', loginRoute);
+app.use('/', userRoute);
 
 // ...
 
