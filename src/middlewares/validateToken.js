@@ -8,9 +8,8 @@ const validateToken = (req, res, next) => {
     if (!authorization) {
       return res.status(401).json({ message: 'Token not found' });
     }
-    const [, token] = authorization.split(' ');
+    const [, token] = authorization.startsWith('Bearer') ? authorization.split(' ') : authorization;
     jwt.verify(token, JWT_SECRET);
-
     next();
   } catch (error) {
     return res.status(401).json({ message: 'Expired or invalid token' });
