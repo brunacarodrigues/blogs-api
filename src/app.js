@@ -1,6 +1,6 @@
 const express = require('express');
 
-// Iniciando Projeto Blogs API...
+// Iniciando o Projeto Blogs API...
 
 const app = express();
 
