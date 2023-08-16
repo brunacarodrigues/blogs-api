@@ -8,7 +8,8 @@ const login = async (email, password) => {
     if (!user || user.password !== password) {
         return { status: 400, message: 'Invalid fields' };
     }
-    const token = jwt.sign(email, JWT_SECRET, { algorithm: 'HS256' });
+    const userId = user.dataValues.id;
+    const token = jwt.sign({ email, userId }, JWT_SECRET, { algorithm: 'HS256' });
     return token;
 };
 
