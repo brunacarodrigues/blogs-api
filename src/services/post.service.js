@@ -1,4 +1,4 @@
-const { Category, PostCategory, BlogPost, sequelize } = require('../models');
+const { Category, PostCategory, BlogPost, sequelize, User } = require('../models');
 
 // lembrar da ordem dos parâmetros
 const createPost = async (title, content, categoryIds, userId) => {
@@ -18,13 +18,26 @@ const createPost = async (title, content, categoryIds, userId) => {
   return newPost;
 };
 
-// const { BlogPost } = require('../models');
+const getAllPosts = async () => {
+  const modelsInclude = [
+    { model: User, as: 'user', attributes: { exclude: ['password'] } },
+    { model: Category, as: 'categories', through: { attributes: [] } },
+  ];
+  const posts = await BlogPost.findAll({ include: modelsInclude });
+  return posts;
+};
 
-// const createPost = async ({ title, content, id }) => {
-//   const post = await BlogPost.create({ title, content, userId: id });
-//   return post;
-// };
+const getByIdPost = async (id) => {
+  const modelsInclude = [
+    { model: User, as: 'user', attributes: { exclude: ['password'] } },
+    { model: Category, as: 'categories', through: { attributes: [] } },
+  ];
+  const post = await BlogPost.findByPk(id, { include: modelsInclude });
+  return post;
+};
 
 module.exports = {
   createPost,
+  getAllPosts,
+  getByIdPost,
 };
