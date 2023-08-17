@@ -36,8 +36,20 @@ const getByIdPost = async (id) => {
   return post;
 };
 
+const updateByIdPost = async (id, title, content) => {
+  if (!title || !content) {
+    return { message: 'Some required fields are missing' };
+  }
+    await sequelize.transaction(async (transaction) => {
+    const updated = await BlogPost.update({ title, content }, { where: { id } }, { transaction });
+    return updated;
+  });
+  return getByIdPost(id);
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getByIdPost,
+  updateByIdPost,
 };
