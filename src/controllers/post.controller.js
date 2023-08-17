@@ -82,6 +82,16 @@ const deleteByIdPost = async (req, res) => {
     return res.status(500).json({ message: ERROR_MSG });
   }
 };
+
+const searchPost = async (req, res) => {
+  try {
+    const { q } = req.query;
+    const posts = await postService.searchPost(q);
+    return res.status(200).json(posts);
+  } catch (error) {
+    return res.status(500).json({ message: ERROR_MSG });
+  }
+};
   
 module.exports = {
   createPost,
@@ -89,4 +99,5 @@ module.exports = {
   getByIdPost,
   updateByIdPost,
   deleteByIdPost,
+  searchPost,
 };
