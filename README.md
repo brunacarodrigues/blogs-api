@@ -1,10 +1,2 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Projeto do módulo de Back-End.
+Desenvolvimento de uma aplicação web com Node.js e Express, utilizando ORM (Object-Relational Mapping) para interagir com o banco de dados, criação de modelos para representar entidades do sistema (como usuários, categorias e posts), definição de endpoints para implementar funcionalidades de CRUD (Create, Read, Update, Delete), e criação de migrações para gerenciar o esquema do banco de dados de forma controlada e versionada. Além de adicionar endpoints para exclusão de usuários e pesquisa de posts por termo de busca.
